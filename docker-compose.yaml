@@ -1,0 +1,8 @@
+services:
+  php:
+    image: php:8.4.6-cli-alpine3.20
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    stdin_open: true   # habilita STDIN
+    tty: true
