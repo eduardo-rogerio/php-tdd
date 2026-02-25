@@ -18,7 +18,14 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "src/"
+      "CDC\\Loja\\": [
+        "src/CDC/Loja",
+        "tests/CDC/Loja"
+      ],
+      "CDC\\Exemplos\\": [
+        "src/CDC/Exemplos",
+        "tests/CDC/Exemplos"
+      ]
     }
   }
 }
