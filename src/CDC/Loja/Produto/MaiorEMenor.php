@@ -13,12 +13,10 @@ class MaiorEMenor
     {
         foreach ($carrinho->getProdutos() as $produto) {
 
-            if (empty($this->menor)
-                || $produto->getValor() < $this->menor->getValor()) {
+            if (empty($this->menor) || $produto->getValor() < $this->menor->getValor()) {
                 $this->menor = $produto;
             }
-            if (empty($this->maior)
-                || $produto->getValor() > $this->maior->getValor()) {
+            if (empty($this->maior) || $produto->getValor() > $this->maior->getValor()) {
                 $this->maior = $produto;
             }
         }

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class MaiorEMenorTest extends TestCase {
 
-    public function testOrdemDecrescente()
+    public function testOrdemDecrescente(): void
     {
         $carrinho = new CarrinhoDeCompras();
 
