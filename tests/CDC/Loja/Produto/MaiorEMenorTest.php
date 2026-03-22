@@ -22,4 +22,16 @@ class MaiorEMenorTest extends TestCase {
         $this->assertEquals("Jogo de pratos", $maiorMenor->getMenor()->getNome());
         $this->assertEquals("Geladeira", $maiorMenor->getMaior()->getNome());
     }
+
+    public function testApenasUmProduto(): void
+    {
+        $carrinho = new CarrinhoDeCompras();
+
+        $carrinho->adiciona(new Produto("Geladeira", 450.00));
+
+        $maiorMenor = new MaiorEMenor();
+        $maiorMenor->encontra($carrinho);
+        $this->assertEquals("Geladeira", $maiorMenor->getMenor()->getNome());
+        $this->assertEquals("Geladeira", $maiorMenor->getMaior()->getNome());
+    }
 }
