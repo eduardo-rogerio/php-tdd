@@ -9,10 +9,18 @@ class ConversorDeNumeroRomano {
     public function converte(string $numeroRomano): int
     {
         $acumulador = 0;
+        $ultimoVizinhoDaDireita = 0;
         $lenght = strlen($numeroRomano);
-        for($i = 0; $i < $lenght; $i++){
-            $numCorrente = NumerosRomanos::from($numeroRomano[$i]);
-            $acumulador += $numCorrente->getNumeroDecimal();
+        for($i = $lenght - 1; $i >= 0; $i--) {
+            $numCorrente = NumerosRomanos::from($numeroRomano[$i])->getNumeroDecimal();
+            $multiplicador = 1;
+
+            if ($numCorrente < $ultimoVizinhoDaDireita) {
+                $multiplicador = -1;
+            }
+
+            $acumulador += ($numCorrente * $multiplicador);
+            $ultimoVizinhoDaDireita = $numCorrente;
         }
 
         return $acumulador;
