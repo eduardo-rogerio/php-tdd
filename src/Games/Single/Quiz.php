@@ -21,9 +21,16 @@ class Quiz
     {
         return $this->questions[0];
     }
-
+    public function isComplete(): bool
+    {
+        $answerdQuestion = count(array_filter($this->questions, fn (Question $q) => $q->answerd()));
+        return $answerdQuestion === count($this->questions);
+    }
     public function grade()
     {
+        if (! $this->isComplete()){
+            throw new \Exception("this quiz has not yet been complited");
+        }
         $correct = count($this->correctlyAnsweredQuestions());
 
         return ($correct / count($this->questions)) * 100;

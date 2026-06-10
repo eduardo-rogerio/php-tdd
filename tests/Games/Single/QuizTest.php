@@ -51,6 +51,10 @@ class QuizTest extends TestCase
     /** @test */
     public function it_cannot_be_granded_until_all_questions_have_been_answered()
     {
+        $quiz = new Quiz;
+        $quiz->addQuestions(new Question("what is 2+2", 4));
 
+        $this->expectException(\Exception::class);
+        $quiz->grade();
     }
 }

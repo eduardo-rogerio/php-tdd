@@ -7,7 +7,7 @@ class Question
 {
 
     private mixed $answer;
-    private bool $correct;
+    private bool $correct = false;
 
     /**
      * @param  string  $body
@@ -26,6 +26,10 @@ class Question
         $this->correct = $answer === $this->solution;
     }
 
+    public function answerd(): bool
+    {
+        return isset($this->answer);
+    }
     public function isCorrect(): bool
     {
         return $this->correct;

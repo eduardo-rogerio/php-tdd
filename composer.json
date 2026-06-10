@@ -22,6 +22,10 @@
         "src/CDC/Loja",
         "tests/CDC/Loja"
       ],
+      "Games\\": [
+        "src/Games",
+        "tests/Games"
+      ],
       "CDC\\Exemplos\\": [
         "src/CDC/Exemplos",
         "tests/CDC/Exemplos"
