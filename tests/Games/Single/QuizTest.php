@@ -45,7 +45,23 @@ class QuizTest extends TestCase
     /** @test */
     public function it_correctly_tracks_the_next_question_in_the_queue()
     {
-        
+        $quiz = new Quiz;
+        $quiz->addQuestions($question1 = new Question("what is 2+2", 4));
+        $quiz->addQuestions($question2 = new Question("what is 3+3", 6));
+
+        $this->assertEquals($question1, $quiz->nextQuestion());
+        $this->assertEquals($question2, $quiz->nextQuestion());
+
+    }
+
+    /** @test */
+    public function it_returns_false_if_there_are_no_remaining_next_questions()
+    {
+        $quiz = new Quiz;
+        $quiz->addQuestions($question1 = new Question("what is 2+2", 4));
+
+        $quiz->nextQuestion();
+        $this->assertFalse($quiz->nextQuestion());
     }
 
     /** @test */

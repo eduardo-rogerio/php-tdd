@@ -4,7 +4,7 @@ namespace Games\Single;
 
 class Quiz
 {
-    public function __construct(protected array $questions = [])
+    public function __construct(protected array $questions = [], private int $currentQuestion = 1)
     {}
 
     public function addQuestions(Question $question): void
@@ -17,10 +17,18 @@ class Quiz
         return $this->questions;
     }
 
-    public function nextQuestion()
+    public function nextQuestion(): Question|bool
     {
-        return $this->questions[0];
+        if (!isset($this->questions[$this->currentQuestion - 1])){
+            return false;
+        }
+
+        $question = $this->questions[$this->currentQuestion - 1];
+        $this->currentQuestion++;
+
+        return $question;
     }
+
     public function isComplete(): bool
     {
         $answerdQuestion = count(array_filter($this->questions, fn (Question $q) => $q->answerd()));
